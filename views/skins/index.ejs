@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skins Index</title>
+</head>
+<body>
+  <h1>CS Locker Index</h1>
+  <a href="/skins/new">Add a Skin</a>
+  <% weapons.forEach(weapon => { %>
+    <div id="weaponDiv">
+      <img src="<%= weapon.weapon.image %>">
+    </div>
+  <% }) %>
+</body>
+</html>

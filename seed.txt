@@ -1,0 +1,32 @@
+const mongoose = require('mongoose')
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGODB_URI)
+mongoose.connection.on('connected', function(){
+    console.log('Express has establised a connection with MongoDB')
+})
+const Weapon = require('./models/weapon')
+
+async function getWeaponSkins(req, res) {
+    const data = await (await fetch('https://raw.githubusercontent.com/qwkdev/csapi/refs/heads/main/data2.json')).json()
+    console.log(data)
+    const weaponData = Object.keys(data).map(key => data[key])
+
+    for (wData of weaponData) {
+      const exists = await Weapon.findOne({name: wData.name})
+
+      if (!exists) {
+        const newweapon = await Weapon.create({
+          name: wData.name,
+          weapon: wData.weapon,
+          finish: wData.finish,
+          
+        })
+        console.log(newweapon)
+      }
+    
+    }
+    console.log('Finished!')
+}
+
+getWeaponSkins();
