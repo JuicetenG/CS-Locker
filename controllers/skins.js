@@ -61,6 +61,11 @@ router.get('/:skinId', async (req, res) => {
   });
 });
 
+router.get('/data/weapons', async (req, res) => {
+  const searchList = await Weapon.distinct('name');
+  res.json(searchList);
+});
+
 router.get('/:skinId/edit', async (req, res) => {
   const skin = await UserWeapon.findOne({_id: req.params.skinId}).populate('weapon')
     .populate('owner');
@@ -71,15 +76,13 @@ router.get('/:skinId/edit', async (req, res) => {
 });
 
 router.get('/users/:userId', async (req, res) => {
-  const userWeapons = await UserWeapon.find({}).populate('owner')
+  const userWeapons = await UserWeapon.find({ owner: req.params.userId }).populate('owner')
     .populate('weapon');
-  const user = await User.findById(req.params.userId);
+  const profile = await User.findById(req.params.userId);
 
-  console.log(user);
   res.render('skins/userSkins.ejs', {
     weapons: userWeapons,
-    id: req.params.userId,
-    user: user.username,
+    profile: profile,
   });
 }); 
 
@@ -94,7 +97,6 @@ router.put('/:skinId', async (req, res) => {
 });
 
 router.delete('/:skinId', async (req, res) => {
-  console.log(req.params.skinId);
   await UserWeapon.findByIdAndDelete(req.params.skinId);
   res.redirect('/skins');
 });

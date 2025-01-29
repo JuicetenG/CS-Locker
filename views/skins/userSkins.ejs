@@ -2,23 +2,21 @@
   <title>Skins Index</title>
 </head>
 <body>
-  <h1><%= user %>'s Profile</h1>
+  <h1><%= profile.username %>'s Profile</h1>
   <a href="/">Home</a>
   <a href="/skins">Index</a>
   <a href="/skins/new">Add a Skin</a>
   <% weapons.forEach(weapon => { %>
-    <% if(id === String(weapon.owner._id)) { %>
-      <div id="weaponDiv">
-        <a href="/skins/<%= weapon._id %>"><img src="<%= weapon.weapon.image %>"></a>
-        <hr <%/* eslint-disable css-propertyvalueexpected */%>
-        style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
-        <p>
-          <span><%= weapon.weapon.name %></span>
-          <span>(<%= weapon.wearLevel %>)</span>
-        </p>
-        <p>$<%= weapon.price %></p>
-      </div>
-    <% } %>
+    <div id="weaponDiv">
+      <a href="/skins/<%= weapon._id %>"><img src="<%= weapon.weapon.image %>"></a>
+      <hr <%/* eslint-disable css-propertyvalueexpected */%>
+      style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
+      <p>
+        <span><%= weapon.weapon.name %></span>
+        <span>(<%= weapon.wearLevel %>)</span>
+      </p>
+      <p>$<%= weapon.price %></p>
+    </div>
   <% }) %>
 </body>
 </html>
