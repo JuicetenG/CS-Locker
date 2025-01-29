@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('../partials/_head.ejs') %>
   <title>Add Skin Page</title>
 </head>
 <body>
+  <a href="/">Home</a>
+  <a href="/skins">Index</a>
   <h1>Add a Skin to your Inventory!</h1>
   <form action="/skins" method="POST">
     <label for="weapon">Weapon: </label>
@@ -19,7 +17,7 @@
     <input type="text" name="price" id="price" required>
 
     <label for="float">Float: </label>
-    <input type="range" name="float" id="float" min="0.0" max="1.0" step="0.001" value="0.5"> 
+    <input type="range" name="float" id="float" min="0.0000000001" max=".99" step="0.001" value="0.5">
 
     <button type="submit">Submit</button>
   </form>

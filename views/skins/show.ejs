@@ -1,0 +1,27 @@
+<%- include('../partials/_head') %>
+<title>Show Page</title>
+</head>
+<body>
+  <a href="/skins">Index</a>
+  <% if(String(weapon.owner._id) !== user._id) { %>
+    <h1><a href="/skins/users/<%= weapon.owner._id %>"><%= weapon.owner.username %></a>'s <%= weapon.weapon.name %></h1>
+  <% } else { %>
+    <h1><%= weapon.owner.username %>'s <%= weapon.weapon.name %></h1> 
+  <% } %>
+  <div id="weaponShowDiv">
+    <img src="<%= weapon.weapon.image %>">
+    <hr <%/* eslint-disable css-propertyvalueexpected */%>
+    style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
+    <p>
+      <span><%= weapon.weapon.name %></span>
+      <span>(<%= weapon.wearLevel %>)</span>
+    </p>
+    <p>$<%= weapon.price %></p>
+    <% if(String(weapon.owner._id) === user._id) { %>
+      <a href="/skins/<%= weapon._id %>/edit">Change Price</a>
+      <form action="/skins/<%= weapon._id %>?_method=DELETE" method="POST">
+        <button>delete</button>
+      </form>
+    <% } %>
+  </div>
+</body>

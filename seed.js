@@ -11,7 +11,7 @@ const Weapon = require('./models/weapon');
 async function getWeaponSkins(req, res) {
   const data = await (await fetch('https://raw.githubusercontent.com/qwkdev/csapi/refs/heads/main/data.json')).json();
   const weaponData = Object.keys(data).map(key => data[key]);
-
+  let i = 0;
   for(weapon of weaponData) {
     const exists = await Weapon.findOne({ name: weapon.name });
     if(!exists) {
@@ -21,8 +21,10 @@ async function getWeaponSkins(req, res) {
         finish: weapon.finish, 
         rarity: weapon.rarity,
         image: weapon.images[Object.keys(weapon.images)[0]],
+        color: weapon.color,
       });
     }
+    console.log(`${++i} items loaded`);
   }
 }
 

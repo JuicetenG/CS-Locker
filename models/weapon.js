@@ -6,6 +6,7 @@ const weaponSchema = mongoose.Schema({
   finish: String, 
   rarity: String, 
   image: String,
+  color: String,
 });
 
 const Weapon = mongoose.model('Weapon', weaponSchema);

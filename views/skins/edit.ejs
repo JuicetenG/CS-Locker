@@ -1,0 +1,23 @@
+<%- include('../partials/_head') %>
+<title>Show Page</title>
+</head>
+<body>
+  <a href="/skins">Index</a>
+  <a href="/skins/<%= weapon.id %>">back</a>
+  <h1><%= weapon.owner.username %>'s <%= weapon.weapon.name %></h1>
+  <div id="weaponShowDiv">
+    <img src="<%= weapon.weapon.image %>">
+    <hr <%/* eslint-disable css-propertyvalueexpected */%>
+    style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
+    <p>
+      <span><%= weapon.weapon.name %></span>
+      <span>(<%= weapon.wearLevel %>)</span>
+    </p>
+    <form action="/skins/<%= weapon._id %>?_method=PUT" method="POST">
+      <label for="price">$</label>
+      <input type="text" name="price" id="price" value="<%= weapon.price %>">
+
+      <button type="submit">submit</button>
+    </form>
+  </div>
+</body>

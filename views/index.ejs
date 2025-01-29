@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%- include('./partials/_head.ejs') %>
   <title>Home Page</title>
 </head>
 <body>
-  <a href="/skins/new">Add Skin</a>
   <h1>CS Locker</h1>
   <% if (user) { %>
     <p>Welcome, <%= user.username %>!</[]>
     <p>
+      <a href="/skins">Index</a>
       <a href="/auth/sign-out">Sign out</a>
     </p>
   <% } else { %>
