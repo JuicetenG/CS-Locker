@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/new', async (req, res) => {
-  const weaponsList = await Weapon.distinct('name');
+  const weaponsList = await Weapon.find({ });
 
   res.render('skins/new.ejs', {
     weapons: weaponsList,
@@ -63,7 +63,9 @@ router.get('/:skinId', async (req, res) => {
 
 router.get('/data/weapons', async (req, res) => {
   const searchList = await Weapon.distinct('name');
-  res.json(searchList);
+  const allWeapons = await Weapon.find({ });
+
+  res.json(allWeapons);
 });
 
 router.get('/:skinId/edit', async (req, res) => {
