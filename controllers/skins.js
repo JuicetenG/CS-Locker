@@ -6,10 +6,17 @@ const Weapon = require('../models/weapon.js');
 const UserWeapon = require('../models/user-weapon.js');
 
 router.get('/', async (req, res) => {
-  const userWeapons = await UserWeapon.find({}).populate('weapon');
-  res.render('skins/index.ejs', {
-    weapons: userWeapons,
-  });
+  try {
+    const userWeapons = await UserWeapon.find({ }).populate('weapon');
+
+    res.render('skins/index.ejs', {
+      weapons: userWeapons,
+    });
+
+  } catch(err) {
+    console.log(err);
+    res.send('error rendering index page, check terminal');
+  }
 });
 
 
@@ -39,68 +46,105 @@ router.post('/', async (req, res) => {
     res.redirect('/skins');
   } catch(err) {
     console.log(err);
-    res.redirect('/');
+    res.send('error adding skin, check terminal');
   }
 });
 
 router.get('/new', async (req, res) => {
-  const weaponsList = await Weapon.find({ });
+  try {
+    const weaponsList = await Weapon.find({ });
 
-  res.render('skins/new.ejs', {
-    weapons: weaponsList,
-  });
+    res.render('skins/new.ejs', {
+      weapons: weaponsList,  
+    });
+
+  } catch(err) {
+    console.log(err);
+    res.send('error rendering new page, check terminal');
+  }
 });
 
 
 router.get('/:skinId', async (req, res) => {
-  const skin = await UserWeapon.findOne( {_id: req.params.skinId} ).populate('weapon')
-    .populate('owner');
-  
-  res.render('skins/show.ejs', {
-    weapon: skin,
-  });
+  try {
+    const skin = await UserWeapon.findOne( {_id: req.params.skinId} ).populate('weapon')
+      .populate('owner');
+    
+    res.render('skins/show.ejs', {
+      weapon: skin,
+    });
+
+  } catch(err) {
+    console.log(err);
+    res.send('error rendering show page, check terminal')
+  }
 });
 
 router.get('/data/weapons', async (req, res) => {
-  const searchList = await Weapon.distinct('name');
-  const allWeapons = await Weapon.find({ });
-
-  res.json(allWeapons);
+  try {
+    const allWeapons = await Weapon.find({ });
+    res.json(allWeapons);
+  } catch(err) {  
+    console.log(err);
+    res.send('error retrieving data, check terminal');
+  }
 });
 
 router.get('/:skinId/edit', async (req, res) => {
-  const skin = await UserWeapon.findOne({_id: req.params.skinId}).populate('weapon')
-    .populate('owner');
+  try {
+    const skin = await UserWeapon.findOne({_id: req.params.skinId}).populate('weapon')
+      .populate('owner');
+  
+    res.render('skins/edit.ejs', {
+      weapon: skin,
+    });
 
-  res.render('skins/edit.ejs', {
-    weapon: skin,
-  });
+  } catch(err) {
+    console.log(err);
+    res.send('error rendering edit page, check terminal');
+  }
 });
 
 router.get('/users/:userId', async (req, res) => {
-  const userWeapons = await UserWeapon.find({ owner: req.params.userId }).populate('owner')
-    .populate('weapon');
-  const profile = await User.findById(req.params.userId);
+  try {
+    const userWeapons = await UserWeapon.find({ owner: req.params.userId }).populate('owner')
+      .populate('weapon');
+    const profile = await User.findById(req.params.userId);
+  
+    res.render('skins/userSkins.ejs', {
+      weapons: userWeapons,
+      profile: profile,
+    });
 
-  res.render('skins/userSkins.ejs', {
-    weapons: userWeapons,
-    profile: profile,
-  });
+  } catch(err) {
+    console.log(err);
+    res.send('error rendering user skins, check terminal');
+  }
 }); 
 
 router.put('/:skinId', async (req, res) => {
-  const skin = await UserWeapon.findOneAndUpdate(
-    { _id: req.params.skinId },
-    { $set: { price: Number(req.body.price) } },
-    { new: true },
-  );
-  console.log(skin); 
-  res.redirect(`/skins/${req.params.skinId}`);
+  try {
+    const skin = await UserWeapon.findOneAndUpdate(
+      { _id: req.params.skinId },
+      { $set: { price: Number(req.body.price) } },
+      { new: true },
+    );
+
+    res.redirect(`/skins/${req.params.skinId}`);
+  } catch(err) {
+    console.log(err);
+    res.send('error updating skin, check terminal');
+  }
 });
 
 router.delete('/:skinId', async (req, res) => {
-  await UserWeapon.findByIdAndDelete(req.params.skinId);
-  res.redirect('/skins');
+  try {
+    await UserWeapon.findByIdAndDelete(req.params.skinId);
+    res.redirect('/skins');
+  } catch(err) {
+    console.log(err);
+    res.send('error deleting skin, check terminal');
+  }
 });
 
 module.exports = router;

@@ -1,6 +1,9 @@
 const searchBox = document.querySelector('#weapon-search');
 const select = document.querySelector('#weapon');
 const image = document.querySelector('#weapon-image');
+const slider = document.querySelector('#float')
+const sliderOutput = document.querySelector('#slider-output');
+
 let weaponsList = [];
 
 console.log('in the script');
@@ -31,7 +34,7 @@ function fillSelect(weapons) {
   });
 }
 
-function filterItems(search) {
+function filterWeapons(search) {
   let filteredItems = weaponsList.filter(weapon => 
     weapon.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -43,12 +46,20 @@ function findImage(weapon) {
   image.src = foundImage.image;
 }
 
+function displayFloat(float) {
+  sliderOutput.textContent = float;
+}
+
 searchBox.addEventListener('input', (e) => {
   filterItems(e.target.value);
 });
 
 select.addEventListener('change', (e) => {
   findImage(e.target.value);
+});
+
+slider.addEventListener('input', (e) => {
+  displayFloat(e.target.value);
 });
 
 searchWeaponNames();

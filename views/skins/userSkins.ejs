@@ -5,7 +5,9 @@
   <h1><%= profile.username %>'s Profile</h1>
   <a href="/">Home</a>
   <a href="/skins">Index</a>
-  <a href="/skins/new">Add a Skin</a>
+  <% if(user._id === String(profile._id)) { %>
+    <a href="/skins/new">Add a Skin</a>
+  <% } %>
   <% weapons.forEach(weapon => { %>
     <div id="weaponDiv">
       <a href="/skins/<%= weapon._id %>"><img src="<%= weapon.weapon.image %>"></a>
