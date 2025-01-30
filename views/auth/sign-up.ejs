@@ -2,20 +2,33 @@
   <title>Sign Up</title>
 </head>
 <body>
-  <h1>Create a new account!</h1>
-  <form action="/auth/sign-up" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-    <label for="confirmPassword">Confirm Password:</label>
-    <input 
-      type="password"
-      name="confirmPassword"
-      id="confirmPassword"
-      required 
-    />
-    <button type="submit">Sign up</button>
-  </form>
+  <div id="modal">
+    <div id="modal-text">
+      <div id="auth-form">
+        <h1>Enter account details:</h1>
+        <img src="../images/CS_locker_logo2.png" id="auth-logo" alt="logo">
+        <form action="/auth/sign-up" method="POST">
+          <div id="auth-form-input">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required />
+          </div>
+          <div id="auth-form-input">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <div id="auth-form-input">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              required
+            />
+          </div>
+          <button type="submit">Sign up</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

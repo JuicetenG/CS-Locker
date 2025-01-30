@@ -39,7 +39,6 @@ app.get('/', (req, res) => {
   res.render('index.ejs', {
     user: req.session.user,
   });
-  console.log(req.session.user);
 });
 
 app.use(isSignedIn);

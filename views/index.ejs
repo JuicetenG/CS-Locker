@@ -2,19 +2,24 @@
   <title>Home Page</title>
 </head>
 <body>
-  <h1>CS Locker</h1>
-  <% if (user) { %>
-    <p>Welcome, <%= user.username %>!</[]>
-    <p>
-      <a href="/skins">Index</a>
-      <a href="/auth/sign-out">Sign out</a>
-    </p>
-  <% } else { %>
-    <p>Sign up or sign in to track your inventory and view other's items</p>
-    <p>
-      <a href="/auth/sign-up">Sign up</a> or
-      <a href="/auth/sign-in">Sign in</a>.
-    </p>
-  <% } %>
+  <div id="modal">
+    <div id="modal-text">
+      <h1 id="homepage-h1">CS-Locker</h1>
+      <img src="./images/CS_locker_logo2.png" id="homepage-logo" alt="logo">
+      <% if (user) { %>
+        <p>Welcome, <%= user.username %>!</[]>
+        <p>
+          <a href="/skins"><button>Index</button></a>
+          <a href="/auth/sign-out"><button>Sign out</button></a>
+        </p>
+      <% } else { %>
+        <p>Keep track of your CS weapon skin inventory!</p>
+        <p>
+          <a href="/auth/sign-in"><button id="index-button">Sign in</button></a>
+          <a href="/auth/sign-up"><button id="index-button">Sign up</button></a> 
+        </p>
+      <% } %>
+    </div>
+  </div>
 </body>
 </html>

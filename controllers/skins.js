@@ -8,7 +8,7 @@ const UserWeapon = require('../models/user-weapon.js');
 router.get('/', async (req, res) => {
   try {
     const userWeapons = await UserWeapon.find({ }).populate('weapon');
-
+    
     res.render('skins/index.ejs', {
       weapons: userWeapons,
     });

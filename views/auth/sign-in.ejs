@@ -2,14 +2,24 @@
   <title>Sign In</title>
 </head>
 <body>
-  <h1>Sign in</h1>
-  <form action="/auth/sign-in" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required />
-    <button type="submit">Sign in</button>
-  </form>
-  <div><a href="/sign-up">Sign Up</a></div>
+  <div id="modal">
+    <div id="modal-text" class="auth-form">
+      <div id="auth-form">
+        <h1>Sign in:</h1>
+        <img src="../images/CS_locker_logo2.png" id="auth-logo" alt="logo">
+        <form action="/auth/sign-in" method="POST">
+          <div id="auth-form-input">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required />
+          </div>
+          <div id="auth-form-input">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <button type="submit">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
