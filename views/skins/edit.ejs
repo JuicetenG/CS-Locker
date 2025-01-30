@@ -2,10 +2,9 @@
 <title>Show Page</title>
 </head>
 <body>
-  <a href="/skins">Index</a>
-  <a href="/skins/<%= weapon.id %>">back</a>
+  <%- include('../partials/_navbar.ejs') %>
   <h1><%= weapon.owner.username %>'s <%= weapon.weapon.name %></h1>
-  <div id="weaponShowDiv">
+  <div id="weapon-edit-div">
     <img src="<%= weapon.weapon.image %>">
     <hr <%/* eslint-disable css-propertyvalueexpected */%>
     style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">

@@ -34,8 +34,6 @@ app.use(
 
 app.use(passUserToView);
 app.use('/auth', authController);
-app.use(isSignedIn);
-app.use('/skins', skinsController);
 
 app.get('/', (req, res) => {
   res.render('index.ejs', {
@@ -44,6 +42,8 @@ app.get('/', (req, res) => {
   console.log(req.session.user);
 });
 
+app.use(isSignedIn);
+app.use('/skins', skinsController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

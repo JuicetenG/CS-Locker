@@ -1,6 +1,6 @@
 const searchBox = document.querySelector('#weapon-search');
 const select = document.querySelector('#weapon');
-const image = document.querySelector('#weapon-image');
+const image = document.querySelector('#skin-image-new');
 const slider = document.querySelector('#float')
 const sliderOutput = document.querySelector('#slider-output');
 
@@ -51,7 +51,7 @@ function displayFloat(float) {
 }
 
 searchBox.addEventListener('input', (e) => {
-  filterItems(e.target.value);
+  filterWeapons(e.target.value);
 });
 
 select.addEventListener('change', (e) => {

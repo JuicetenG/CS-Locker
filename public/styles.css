@@ -1,28 +1,43 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: lightgray;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-img {
+#skin-image {
   height: 200px;
   width: auto;
   text-align: center;
+}
+
+#skin-image-new {
+  height: 400px;
+  width: auto;
+}
+
+#weapon-wrapper {
+  display: grid;
+  width: 936px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#weapon-div {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 300px;
+  margin: 6px;
+  padding: 6px;
 }
 
 hr {
   border-style: solid;
   height: 4px;
   width: 100%;
-}
-#weaponDiv {
-  border: 2px solid black;
-  border-radius: 10px;
-  width: 300px;
-  margin: 6px;
-  padding: 6px;
 }

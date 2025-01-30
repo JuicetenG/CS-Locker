@@ -2,21 +2,23 @@
   <title>Skins Index</title>
 </head>
 <body>
+  <%- include('../partials/_navbar.ejs') %>
   <h1>CS Locker Index</h1>
-  <a href="/">Home</a>
-  <a href="/skins/users/<%= user._id %>">My Profile</a>
   <a href="/skins/new">Add a Skin</a>
-  <% weapons.forEach(weapon => { %>
-    <div id="weaponDiv">
-      <a href="/skins/<%= weapon._id %>"><img src="<%= weapon.weapon.image %>"></a>
-      <hr <%/* eslint-disable css-propertyvalueexpected */%>
-      style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
-      <p>
-        <span><%= weapon.weapon.name %></span>
-        <span>(<%= weapon.wearLevel %>)</span>
-      </p>
-      <p>$<%= weapon.price %></p>
-    </div>
-  <% }) %>
+  <div id="weapon-wrapper">
+    <% weapons.forEach(weapon => { %>
+      <div id="weapon-div">
+        <a href="/skins/<%= weapon._id %>">
+          <img src="<%= weapon.weapon.image %>" id="skin-image" alt="<%= weapon.weapon.name %>"></a>
+        <hr <%/* eslint-disable css-propertyvalueexpected */%>
+        style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
+        <p>
+          <span><%= weapon.weapon.name %></span>
+          <span>(<%= weapon.wearLevel %>)</span>
+        </p>
+        <p>$<%= weapon.price %></p>
+      </div>
+    <% }) %>
+  </div>
 </body>
 </html>

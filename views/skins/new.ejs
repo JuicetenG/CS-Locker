@@ -2,17 +2,18 @@
   <title>Add a Skin</title>
 </head>
 <body>
-  <a href="/">Home</a>
-  <a href="/skins">Index</a>
+  <%- include('../partials/_navbar.ejs') %>
   <h1>Add a Skin to your Inventory!</h1>
   <form action="/skins" method="POST">
+   
+    
     <input type="text" id="weapon-search" placeholder="search weapons...">
     <div>
       <label for="weapon">Weapon: </label>
       <select name="weapon" id="weapon" required></select>
     </div>
-    <img src="/images/CS_knives.png" id="weapon-image">
-
+    <img src="/images/CS_knives.png" id="skin-image-new" alt="selected skin image">
+    `
     <div>
       <label for="price">Price: </label>
       <input type="text" name="price" id="price" required>

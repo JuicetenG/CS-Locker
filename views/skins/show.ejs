@@ -2,14 +2,14 @@
 <title>Show Page</title>
 </head>
 <body>
-  <a href="/skins">Index</a>
+  <%- include('../partials/_navbar.ejs') %>
   <% if(String(weapon.owner._id) !== user._id) { %>
     <h1><a href="/skins/users/<%= weapon.owner._id %>"><%= weapon.owner.username %></a>'s <%= weapon.weapon.name %></h1>
   <% } else { %>
     <h1><%= weapon.owner.username %>'s <%= weapon.weapon.name %></h1> 
   <% } %>
   <div id="weaponShowDiv">
-    <img src="<%= weapon.weapon.image %>">
+    <img src="<%= weapon.weapon.image %>" id="skin-image-show">
     <hr <%/* eslint-disable css-propertyvalueexpected */%>
     style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
     <p>
