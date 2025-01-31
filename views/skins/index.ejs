@@ -3,22 +3,29 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <h1>CS Locker Index</h1>
-  <a href="/skins/new">Add a Skin</a>
-  <div id="weapon-wrapper">
-    <% weapons.forEach(weapon => { %>
-      <div id="weapon-div">
-        <a href="/skins/<%= weapon._id %>">
-          <img src="<%= weapon.weapon.image %>" id="skin-image" alt="<%= weapon.weapon.name %>"></a>
-        <hr <%/* eslint-disable css-propertyvalueexpected */%>
-        style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
-        <p>
-          <span><%= weapon.weapon.name %></span>
-          <span>(<%= weapon.wearLevel %>)</span>
-        </p>
-        <p>$<%= weapon.price %></p>
-      </div>
-    <% }) %>
+  <div id="index-container">
+    <div id="index-header">
+      <h1>CS Locker Inventory</h1>
+      <a href="/skins/new"><button id="add-skin-button">add a skin</button></a>
+    </div>
+    <div id="weapon-wrapper">
+      <% weapons.forEach(weapon => { %>
+        <div id="weapon-div" <%/* eslint-disable css-propertyvalueexpected */%>
+             style="border:4px solid <%= weapon.weapon.color %>">
+          <a href="/skins/<%= weapon._id %>">
+            <img src="<%= weapon.weapon.image %>" id="skin-image" alt="<%= weapon.weapon.name %>"></a>
+          <hr <%/* eslint-disable css-propertyvalueexpected */%>
+          style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
+          <p id="skin-name" class="skin-info">
+            <span><%= weapon.weapon.name %></span>
+          </p>
+          <p id="wear-price" class="skin-info">
+            <span>(<%= weapon.wearLevel %>)</span>
+            <span>$<%= weapon.price %></span>
+          </p>
+        </div>
+      <% }) %>
+    </div>
   </div>
 </body>
 </html>

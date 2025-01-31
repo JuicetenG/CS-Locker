@@ -43,7 +43,8 @@ router.post('/', async (req, res) => {
       owner: req.session.user._id,
     });
 
-    res.redirect('/skins');
+    res.redirect(`/skins/users/${req.session.user._id}`);
+
   } catch(err) {
     console.log(err);
     res.send('error adding skin, check terminal');
@@ -124,13 +125,13 @@ router.get('/users/:userId', async (req, res) => {
 
 router.put('/:skinId', async (req, res) => {
   try {
-    const skin = await UserWeapon.findOneAndUpdate(
+    await UserWeapon.findOneAndUpdate(
       { _id: req.params.skinId },
       { $set: { price: Number(req.body.price) } },
       { new: true },
     );
 
-    res.redirect(`/skins/${req.params.skinId}`);
+    res.redirect(`/skins/users/${req.session.user._id}`);
   } catch(err) {
     console.log(err);
     res.send('error updating skin, check terminal');
@@ -140,7 +141,7 @@ router.put('/:skinId', async (req, res) => {
 router.delete('/:skinId', async (req, res) => {
   try {
     await UserWeapon.findByIdAndDelete(req.params.skinId);
-    res.redirect('/skins');
+    res.redirect(`/skins/users/${req.session.user._id}`);
   } catch(err) {
     console.log(err);
     res.send('error deleting skin, check terminal');

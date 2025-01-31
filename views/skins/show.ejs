@@ -3,25 +3,36 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <% if(String(weapon.owner._id) !== user._id) { %>
-    <h1><a href="/skins/users/<%= weapon.owner._id %>"><%= weapon.owner.username %></a>'s <%= weapon.weapon.name %></h1>
-  <% } else { %>
-    <h1><%= weapon.owner.username %>'s <%= weapon.weapon.name %></h1> 
-  <% } %>
-  <div id="weaponShowDiv">
-    <img src="<%= weapon.weapon.image %>" id="skin-image-show">
-    <hr <%/* eslint-disable css-propertyvalueexpected */%>
-    style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
-    <p>
-      <span><%= weapon.weapon.name %></span>
-      <span>(<%= weapon.wearLevel %>)</span>
-    </p>
-    <p>$<%= weapon.price %></p>
-    <% if(String(weapon.owner._id) === user._id) { %>
-      <a href="/skins/<%= weapon._id %>/edit">Change Price</a>
-      <form action="/skins/<%= weapon._id %>?_method=DELETE" method="POST">
-        <button>delete</button>
-      </form>
-    <% } %>
-  </div>
+  <div id="index-container">
+    <div id="index-header" class="show-header">
+      <h2><%= weapon.owner.username %>'s <%= weapon.weapon.name %></h2>
+    </div>
+    <div id="weapon-show-wrapper">
+      <div id="weapon-show-div" <%/* eslint-disable css-propertyvalueexpected */%>
+        style="border:4px solid <%= weapon.weapon.color %>">
+        <img src="<%= weapon.weapon.image %>" id="skin-image-show" alt="show page">
+        <hr <%/* eslint-disable css-propertyvalueexpected */%>
+        style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
+        <p id="show-skin-name" class="skin-info">
+          <span><%= weapon.weapon.name %></span>
+        </p>
+        <p id="show-wear-price" class="skin-info">
+          <span>(<%= weapon.wearLevel %>)</span>
+          <span>$<%= weapon.price %></span>
+        </p>
+        <% if(String(weapon.owner._id) === user._id) { %>
+          <div id="update-delete-buttons">
+            <a href="/skins/<%= weapon._id %>/edit"><button>update</button></a>
+            <form action="/skins/<%= weapon._id %>?_method=DELETE" method="POST">
+              <button>delete</button>
+            </form>
+          </div>
+        <% } %>
+        <% if(String(weapon.owner._id) !== user._id) { %>
+          <a href="/skins/users/<%= weapon.owner._id %>">
+            <button id="profile-button">visit <%= weapon.owner.username %>'s profile</button>
+          </a>
+        <% } %>
+      </div>
+    </div>
 </body>

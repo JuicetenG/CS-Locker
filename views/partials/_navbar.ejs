@@ -1,9 +1,11 @@
 <nav>
   <div id="nav">
-    <div id="nav-left"><a href="/skins">Browse Skins</a></div>
-    <div id="nav-right">
-      <a href="/skins/users/<%= user._id %>">My Inventory</a>
-      <a href="/auth/sign-out">Sign out</a>
+    <div id="nav-container">
+      <div id="nav-left"><a href="/skins"><button>all skins</button></a></div>
+      <div id="nav-right">
+        <a href="/skins/users/<%= user._id %>"><button>my inventory</button></a>
+        <a href="/auth/sign-out"><button>sign out</button></a>
+      </div>
     </div>
   </div>
 </nav>

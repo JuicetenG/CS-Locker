@@ -3,33 +3,34 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <h1>Add a Skin to your Inventory!</h1>
-  <form action="/skins" method="POST">
-
-    <img src="/images/CS_knives.png" id="skin-image-new" alt="selected skin image">
-    <div>
-
-      <div>
-        <label for="weapon">Weapon: </label>
-        <select name="weapon" id="weapon" required></select>
-        <input type="text" id="weapon-search" placeholder="search weapons...">
+  <div id="index-container">
+    <div id="index-header" class="new-header">
+      <h2>Add a Skin to your Inventory!</h2>
+    </div>
+    <div id="weapon-show-wrapper">
+      <div id="weapon-new-div">
+        <form action="/skins" method="POST">
+          <div id="new-image-container">
+            <img src="/images/CS_knives.png" id="skin-image-new" alt="selected skin image">
+          </div>
+          <hr id="new-ruler">
+          <div id="new-form-controls">
+            <input type="text" id="weapon-search" placeholder="  search weapons...">
+            <select name="weapon" id="weapon" required></select>
+            
+            <label for="price" id="price-label">Price: </label>
+            <input type="text" name="price" id="price" required>
+          
+            <label for="float" id="float-label">Float: <span id="slider-output">0.5</span></label>
+            <input type="range" name="float" id="float" min="0.001" max=".99" step="0.001" value="0.5">
+            <div id="new-button-div">
+              <button type="submit">submit</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-    <div>
-      <label for="price">Price: </label>
-      <input type="text" name="price" id="price" required>
-    </div>
-
-    <div>
-      <label for="float">Float: </label>
-      <input type="range" name="float" id="float" min="0.001" max=".99" step="0.001" value="0.5">
-      <div id="slider-output">0.5</div>
-    </div>
-
-    <div>
-      <button type="submit">Submit</button>
-      <script src="/search-script.js"></script>
-    </div>
-  </form>
+  </div>
+  <script src="/search-script.js"></script>
 </body>
 </html>

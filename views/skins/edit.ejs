@@ -3,20 +3,28 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <h1><%= weapon.owner.username %>'s <%= weapon.weapon.name %></h1>
-  <div id="weapon-edit-div">
-    <img src="<%= weapon.weapon.image %>">
-    <hr <%/* eslint-disable css-propertyvalueexpected */%>
-    style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
-    <p>
-      <span><%= weapon.weapon.name %></span>
-      <span>(<%= weapon.wearLevel %>)</span>
-    </p>
-    <form action="/skins/<%= weapon._id %>?_method=PUT" method="POST">
-      <label for="price">$</label>
-      <input type="text" name="price" id="price" value="<%= weapon.price %>">
-
-      <button type="submit">submit</button>
-    </form>
+  <div id="index-container">
+    <div id="index-header" class="show-header">
+      <h2><%= weapon.owner.username %>'s <%= weapon.weapon.name %></h2>
+    </div>
+    <div id="weapon-show-wrapper">
+      <div id="weapon-show-div" <%/* eslint-disable css-propertyvalueexpected */%>
+        style="border:4px solid <%= weapon.weapon.color %>">
+        <div id="weapon-edit-div">
+          <img src="<%= weapon.weapon.image %>" alt="weapon image">
+          <hr <%/* eslint-disable css-propertyvalueexpected */%>
+          style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
+          <p id="span1"><span><%= weapon.weapon.name %></span></p>
+          <p id="span2"><span>(<%= weapon.wearLevel %>)</span></p>
+          <div id="update-div">
+            <form action="/skins/<%= weapon._id %>?_method=PUT" method="POST">
+              <label for="price">$</label>
+              <input type="text" name="price" id="price" value="<%= weapon.price %>">
+              <button type="submit">submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
