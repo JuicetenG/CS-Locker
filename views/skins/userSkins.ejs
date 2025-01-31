@@ -14,7 +14,7 @@
       <% weapons.forEach(weapon => { %>
         <div id="weapon-div"  <%/* eslint-disable css-propertyvalueexpected */%>
           style="border:4px solid <%= weapon.weapon.color %>">
-          <a href="/skins/<%= weapon._id %>"><img src="<%= weapon.weapon.image %>" id="skin-image"></a>
+          <a href="/skins/<%= weapon._id %>"><img src="<%= weapon.weapon.image %>" id="skin-image" alt="user skin"></a>
           <hr <%/* eslint-disable css-propertyvalueexpected */%>
           style="color:<%= weapon.weapon.color %>;background-color:<%= weapon.weapon.color %>;">
           <p id="skin-name" class="skin-info">
