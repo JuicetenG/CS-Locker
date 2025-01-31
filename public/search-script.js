@@ -8,6 +8,7 @@ let weaponsList = [];
 
 console.log('in the script');
 
+//get weapon data and sort alphabetically by the name property
 async function searchWeaponNames() {
   try {
     const response = await fetch('/skins/data/weapons');
@@ -19,6 +20,7 @@ async function searchWeaponNames() {
   }
 }
 
+//populates the select element with the weapon names
 function fillSelect(weapons) {
   select.innerHTML = '';
   const hiddenOption = document.createElement('option');
@@ -34,6 +36,7 @@ function fillSelect(weapons) {
   });
 }
 
+//filters the weapons listed in the select element
 function filterWeapons(search) {
   let filteredItems = weaponsList.filter(weapon => 
     weapon.name.toLowerCase().includes(search.toLowerCase())
@@ -41,11 +44,13 @@ function filterWeapons(search) {
   fillSelect(filteredItems);
 }
 
+//find and populate image matching the weapon selected from the select element
 function findImage(weapon) {
   const foundImage = weaponsList.find(obj => obj.name === weapon)
   image.src = foundImage.image;
 }
 
+//update range slider value display element to show float value 
 function displayFloat(float) {
   sliderOutput.textContent = float;
 }

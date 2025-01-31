@@ -43,3 +43,4 @@ Users are able to:
 - [ ] Add likes feature so users can interact with each other
 - [ ] Add an inventory calculator so the user can see their total items owned
 - [ ] Allow users to save sessions and auto sign in users on sign up
+- [ ] Add users controller and add user account actions / customization
