@@ -1,5 +1,5 @@
-## CS Locker Inventory App
-![CS Locker Logo](./public/images/screenshots/CSlocker.jpg)
+## CS Locker Inventory App - [View the app!](https://cs-locker-7353c5137766.herokuapp.com/)
+![CS Locker Logo](./public/images/screenshots/CSlocker.jpg) 
 >"Are we rushing in? Or are we going sneaky-beaky like?" - CT Side
 
 ## Description 🐱‍👤
